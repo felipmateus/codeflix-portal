@@ -12,6 +12,22 @@ export function Header() {
           priority
           className='cursor-pointer'
         />
+        <nav>
+          <ul className='hidden md:flex md:space-x-4'>
+            {['Início', 'Séries', 'Filmes', 'Novidades', 'Minha lista'].map(
+              (link, index) => (
+                <li
+                  key={link}
+                  className={`cursor-pointer text-sm transition hover:text-gray-300 ${
+                    index === 0 ? 'font-semibold text-white' : 'text-gray-200'
+                  }`}
+                >
+                  {link}
+                </li>
+              )
+            )}
+          </ul>
+        </nav>
       </div>
     </header>
   );
