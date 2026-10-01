@@ -1,62 +1,59 @@
-@startuml contexto
+@startuml containers
 !include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
 AddRelTag("async", $lineStyle = DashedLine())
 SHOW_PERSON_PORTRAIT()
 
-title "Codeflix: Projeto Prático do Curso Full Cycle"
-Person(administrador_catalogo,"Administrador do catálogo de vídeos","Gerencia os vídeos do catálogo e suas categorias")
-Person(administrador_assinantes,"Administrador dos assinantes","Gerencia os assinantes do sistema, bem como os planos de assinatura")
-Person(assinante,"Assinante da plataforma","Assina a plataforma para ter acesso aos vídeos")
+title "Codeflix: Full Cycle course practical project"
+Person(catalog_admin, "Video catalog administrator", "Manages catalog videos and their categories")
+Person(subscribers_admin, "Subscribers administrator", "Manages system subscribers and subscription plans")
+Person(subscriber, "Platform subscriber", "Subscribes to the platform to access the videos")
 
 System_Boundary(gateway, "Codeflix") {
-    Container(frontend_catalogo_admin,"Frontend: Admin do Catálogo de Vídeos","React","SPA que gerencia os vídeos, incluindo as categorias e gêneros")
-    Container(backend_catalogo_admin,"Backend: Admin do Catálogo de Vídeos","Linguagem livre","Gerencia o catálogo de vídeos, incluindo as categorias e gêneros")
-    Container(backend_catalogo_admin_database,"Database Admin do Catálogo de Vídeos","MySQL","Armazena dados do catálogo de vídeos")
-    Rel(frontend_catalogo_admin,backend_catalogo_admin,"Interage com via","HTTPS/JSON")
-    Rel(backend_catalogo_admin,backend_catalogo_admin_database,"Interage com usando","TCP")
-    
-    Container(encoder,"Encoder de vídeos","Go","Realiza o encoding dos vídeos para mpeg-dash")
-    Container(bucket_videos,"Bucket de armazenamento de vídeos encodados","GCP")
-    Container(bucket_videos_raw,"Bucket de armazenamento de vídeos raw","GCP")
-    Rel(encoder,bucket_videos,"Faz upload do vídeo convertido via","HTTPS")
-    Rel(encoder,bucket_videos_raw,"Faz download do vídeo raw via","HTTPS")
-    Rel(backend_catalogo_admin,bucket_videos_raw,"Faz upload do vídeo raw via","HTTPS")
+    Container(frontend_catalog_admin, "Frontend: Video Catalog Admin", "React", "SPA that manages videos, including categories and genres")
+    Container(backend_catalog_admin, "Backend: Video Catalog Admin", "Any language", "Manages the video catalog, including categories and genres")
+    Container(backend_catalog_admin_database, "Video Catalog Admin database", "MySQL", "Stores video catalog data")
+    Rel(frontend_catalog_admin, backend_catalog_admin, "Interacts with via", "HTTPS/JSON")
+    Rel(backend_catalog_admin, backend_catalog_admin_database, "Interacts with using", "TCP")
 
-    Rel(encoder,backend_catalogo_admin,"Consome dados do vídeo recém-criado via","RabbitMQ Fila videos.new",$tags = "async")
-    Rel(encoder, backend_catalogo_admin,"Publica que vídeo foi convertido via","RabbitMQ Fila videos.converted",$tags = "async")
-    Rel(backend_catalogo_admin, encoder,"Consome dados do vídeo convertido via","RabbitMQ Fila videos.converted",$tags = "async")
-    Rel(backend_catalogo_admin, encoder,"Publica que novo vídeo foi enviado para o bucket raw via","RabbitMQ Fila videos.new",$tags = "async")
+    Container(encoder, "Video encoder", "Go", "Encodes videos to MPEG-DASH")
+    Container(bucket_videos, "Encoded videos storage bucket", "GCP")
+    Container(bucket_videos_raw, "Raw videos storage bucket", "GCP")
+    Rel(encoder, bucket_videos, "Uploads the converted video via", "HTTPS")
+    Rel(encoder, bucket_videos_raw, "Downloads the raw video via", "HTTPS")
+    Rel(backend_catalog_admin, bucket_videos_raw, "Uploads the raw video via", "HTTPS")
 
-    Container(frontend_catalogo,"Frontend do catálogo de vídeos","React","Disponibiliza a navegação e o playback dos vídeos para os assinantes")
-    Container(api_catalogo,"API do Catálogo de Vídeos","Linguagem livre","Disponibiliza os endpoints para a navegação e playback dos vídeos")
-    Container(elasticsearch_api_catalogo,"Database API do Catálogo","Elasticsearch","Armazena dados dos vídeos, gêneros, cast members e categorias")
-    Container(apache_kafka,"Apache Kafka","Message Broker","Armazena e serve dados vindos do kafka Connect")
-    Container(kafka_connect,"Kafka Connect","Integração de dados","Serviço de replicação de dados do catálogo")
-    Rel(api_catalogo,elasticsearch_api_catalogo,"Interage com via","HTTPS/JSON")
-    Rel(kafka_connect,elasticsearch_api_catalogo,"Envia dados do catálogo de vídeos via","Sink Elasticsearch",$tags = "async")
-    Rel(kafka_connect,backend_catalogo_admin_database,"Copia dados usando connector","Debezium MySQL",$tags = "async")
-    Rel(kafka_connect,apache_kafka,"Interage com via","Protocolo Kafka",$tags = "async")
+    Rel(encoder, backend_catalog_admin, "Consumes newly created video data via", "RabbitMQ queue videos.new", $tags = "async")
+    Rel(encoder, backend_catalog_admin, "Publishes that the video was converted via", "RabbitMQ queue videos.converted", $tags = "async")
+    Rel(backend_catalog_admin, encoder, "Consumes converted video data via", "RabbitMQ queue videos.converted", $tags = "async")
+    Rel(backend_catalog_admin, encoder, "Publishes that a new video was sent to the raw bucket via", "RabbitMQ queue videos.new", $tags = "async")
 
-    
-    Container(assinatura,"Linguagem livre","Assinatura","Gerencia planos e assinaturas dos assinantes")
-    Container(assinatura_postgres,"Database de Assinaturas","Postgres","Armazena dados dos assinantes e seus planos")
-    Rel(assinatura,assinatura_postgres,"Interage com via","Protocolo Postgres")
+    Container(frontend_catalog, "Video catalog frontend", "React", "Provides catalog browsing and video playback to subscribers")
+    Container(api_catalog, "Video Catalog API", "Any language", "Provides endpoints for catalog browsing and video playback")
+    Container(elasticsearch_api_catalog, "Catalog API database", "Elasticsearch", "Stores videos, genres, cast members and categories")
+    Container(apache_kafka, "Apache Kafka", "Message broker", "Stores and serves data coming from Kafka Connect")
+    Container(kafka_connect, "Kafka Connect", "Data integration", "Catalog data replication service")
+    Rel(api_catalog, elasticsearch_api_catalog, "Interacts with via", "HTTPS/JSON")
+    Rel(kafka_connect, elasticsearch_api_catalog, "Sends video catalog data via", "Elasticsearch sink", $tags = "async")
+    Rel(kafka_connect, backend_catalog_admin_database, "Copies data using connector", "Debezium MySQL", $tags = "async")
+    Rel(kafka_connect, apache_kafka, "Interacts with via", "Kafka protocol", $tags = "async")
 
-    Container(keycloak,"Keycloak","Serviço de Identidade","Realiza a autenticação de todos usuários da plataforma")
-    
-    
+    Container(subscription, "Subscriptions", "Any language", "Manages subscriber plans and subscriptions")
+    Container(subscription_postgres, "Subscriptions database", "Postgres", "Stores subscribers and their plans")
+    Rel(subscription, subscription_postgres, "Interacts with via", "Postgres protocol")
 
-    Rel(administrador_catalogo,frontend_catalogo_admin,"Interage com via","HTTPS")
-    
-    Rel(assinante,assinatura,"Interage com via","HTTPS")
-    Rel(assinante,keycloak,"Interage com via","HTTPS")
-    Rel(assinatura,keycloak,"Interage com via","HTTPS")
+    Container(keycloak, "Keycloak", "Identity service", "Authenticates every platform user")
 
-    Rel(frontend_catalogo_admin,keycloak,"Se autentica em","HTTPS")
+    Rel(catalog_admin, frontend_catalog_admin, "Interacts with via", "HTTPS")
 
-    Rel(assinante,frontend_catalogo,"Interage com via","HTTPS")
-    Rel(frontend_catalogo,api_catalogo,"Interage com via","HTTPS/JSON")
+    Rel(subscriber, subscription, "Interacts with via", "HTTPS")
+    Rel(subscriber, keycloak, "Interacts with via", "HTTPS")
+    Rel(subscription, keycloak, "Interacts with via", "HTTPS")
 
-    Rel(administrador_assinantes,assinatura,"Interage com","HTTPS")
+    Rel(frontend_catalog_admin, keycloak, "Authenticates with", "HTTPS")
+
+    Rel(subscriber, frontend_catalog, "Interacts with via", "HTTPS")
+    Rel(frontend_catalog, api_catalog, "Interacts with via", "HTTPS/JSON")
+
+    Rel(subscribers_admin, subscription, "Interacts with", "HTTPS")
 }
 @enduml
