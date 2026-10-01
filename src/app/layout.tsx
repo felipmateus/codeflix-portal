@@ -3,7 +3,7 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: 'Codeflix',
-  description: 'Assista a filmes e séries na Codeflix',
+  description: 'Watch movies and TV shows on Codeflix',
 };
 
 export default function RootLayout({
@@ -12,7 +12,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='pt-BR'>
+    <html lang='en'>
       <body>{children}</body>
     </html>
   );

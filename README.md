@@ -1,12 +1,12 @@
-# 🎬 Codeflix — Portal do Assinante
+# 🎬 Codeflix — Subscriber Portal
 
-Plataforma de streaming no estilo Netflix, onde o assinante navega pelo catálogo, busca títulos e assiste aos vídeos.
+A Netflix-style streaming platform where subscribers browse the catalog, search for titles and watch videos.
 
-![Prévia da home](docs/screenshots/header.png)
+![Home preview](docs/screenshots/home.png)
 
-> 🚧 Em desenvolvimento — acompanhe a evolução pelas [Releases](../../releases) e pelos Pull Requests.
+> 🚧 Work in progress — follow the evolution through the [Releases](../../releases) and Pull Requests.
 
-## 🧰 Stack
+## 🧰 Tech stack
 
 - [Next.js 14](https://nextjs.org/) (App Router) + React 18
 - TypeScript
@@ -14,26 +14,26 @@ Plataforma de streaming no estilo Netflix, onde o assinante navega pelo catálog
 - Heroicons
 - ESLint + Prettier
 
-## 🏗️ Arquitetura
+## 🏗️ Architecture
 
-Este repositório é o container **"Frontend do catálogo de vídeos"** do sistema Codeflix.
-O diagrama C4 do sistema completo está em [`docs/architecture/codeflix-c4.puml`](docs/architecture/codeflix-c4.puml).
+This repository is the **"Video catalog frontend"** container of the Codeflix system.
+The C4 diagram of the whole system lives in [`docs/architecture/codeflix-c4.puml`](docs/architecture/codeflix-c4.puml).
 
-## 🚀 Rodando localmente
+## 🚀 Running locally
 
-Pré-requisitos: Node.js 18.17+ (veja `.nvmrc`) e Yarn.
+Requirements: Node.js 18.17+ (see `.nvmrc`) and Yarn.
 
 ```bash
 yarn install
 yarn dev
 ```
 
-Acesse <http://localhost:3000>.
+Open <http://localhost:3000>.
 
-## 🎓 Créditos
+## 🎓 Credits
 
-Projeto desenvolvido durante o curso **[Full Cycle 3.0](https://fullcycle.com.br)** — módulo _Portal do usuário - Codeflix_.
+Built during the **[Full Cycle 3.0](https://fullcycle.com.br)** course — _Codeflix Subscriber Portal_ module.
 
-### Mídia
+### Media
 
-- Imagem do banner: _Big Buck Bunny_ © 2008 [Blender Foundation](https://peach.blender.org), licenciada sob [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/).
+- Banner image: _Big Buck Bunny_ © 2008 [Blender Foundation](https://peach.blender.org), licensed under [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/).

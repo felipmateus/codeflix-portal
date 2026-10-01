@@ -1,4 +1,4 @@
-const links = ['Início', 'Séries', 'Filmes', 'Novidades', 'Minha lista'];
+const links = ['Home', 'TV Shows', 'Movies', 'New & Popular', 'My List'];
 
 export function NavLinks() {
   return (
