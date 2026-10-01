@@ -30,3 +30,7 @@ Acesse <http://localhost:3000>.
 ## 🎓 Créditos
 
 Projeto desenvolvido durante o curso **[Full Cycle 3.0](https://fullcycle.com.br)** — módulo _Portal do usuário - Codeflix_.
+
+### Mídia
+
+- Imagem do banner: _Big Buck Bunny_ © 2008 [Blender Foundation](https://peach.blender.org), licenciada sob [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/).
