@@ -28,11 +28,11 @@ export function Banner() {
       </div>
 
       <div className='flex space-x-3'>
-        <button className='flex items-center gap-x-2 rounded bg-white px-5 py-1.5 text-sm font-semibold text-black transition hover:opacity-75 md:px-8 md:py-2.5 md:text-xl'>
+        <button className='flex items-center gap-x-2 whitespace-nowrap rounded bg-white px-5 py-1.5 text-sm font-semibold text-black transition hover:opacity-75 md:px-8 md:py-2.5 md:text-xl'>
           <PlayIcon className='h-6' />
           Assistir
         </button>
-        <button className='flex items-center gap-x-2 rounded bg-gray-500/70 px-5 py-1.5 text-sm font-semibold text-white transition hover:opacity-75 md:px-8 md:py-2.5 md:text-xl'>
+        <button className='flex items-center gap-x-2 whitespace-nowrap rounded bg-gray-500/70 px-5 py-1.5 text-sm font-semibold text-white transition hover:opacity-75 md:px-8 md:py-2.5 md:text-xl'>
           <InformationCircleIcon className='h-6' />
           Mais informações
         </button>
