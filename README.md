@@ -2,6 +2,8 @@
 
 Plataforma de streaming no estilo Netflix, onde o assinante navega pelo catálogo, busca títulos e assiste aos vídeos.
 
+![Prévia da home](docs/screenshots/header.png)
+
 > 🚧 Em desenvolvimento — acompanhe a evolução pelas [Releases](../../releases) e pelos Pull Requests.
 
 ## 🧰 Stack
@@ -9,6 +11,7 @@ Plataforma de streaming no estilo Netflix, onde o assinante navega pelo catálog
 - [Next.js 14](https://nextjs.org/) (App Router) + React 18
 - TypeScript
 - Tailwind CSS
+- Heroicons
 - ESLint + Prettier
 
 ## 🏗️ Arquitetura
@@ -30,3 +33,7 @@ Acesse <http://localhost:3000>.
 ## 🎓 Créditos
 
 Projeto desenvolvido durante o curso **[Full Cycle 3.0](https://fullcycle.com.br)** — módulo _Portal do usuário - Codeflix_.
+
+### Mídia
+
+- Imagem do banner: _Big Buck Bunny_ © 2008 [Blender Foundation](https://peach.blender.org), licenciada sob [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/).
