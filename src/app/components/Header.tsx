@@ -1,9 +1,9 @@
 'use client';
 
-import Image from 'next/image';
 import { useScroll } from '../hooks/useScroll';
 import { Logo } from './Logo';
 import { NavLinks } from './NavLinks';
+import { UserProfile } from './UserProfile';
 
 export function Header() {
   const isScrolled = useScroll();
@@ -20,16 +20,7 @@ export function Header() {
         <Logo />
         <NavLinks />
       </div>
-      <div className='flex items-center space-x-4'>
-        <p className='hidden cursor-not-allowed text-sm lg:inline'>Infantil</p>
-        <Image
-          src='/profile.svg'
-          alt='Perfil'
-          width={32}
-          height={32}
-          className='cursor-pointer rounded'
-        />
-      </div>
+      <UserProfile />
     </header>
   );
 }
