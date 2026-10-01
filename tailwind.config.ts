@@ -1,5 +1,4 @@
 import type { Config } from 'tailwindcss';
-import scrollbarHide from 'tailwind-scrollbar-hide';
 
 const config: Config = {
   content: [
@@ -18,6 +17,7 @@ const config: Config = {
       },
     },
   },
-  plugins: [scrollbarHide],
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  plugins: [require('tailwind-scrollbar-hide')],
 };
 export default config;
