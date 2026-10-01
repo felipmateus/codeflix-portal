@@ -7,7 +7,7 @@ export function Banner() {
       <div className='absolute left-0 top-0 -z-10 h-[65vh] w-full lg:h-[95vh]'>
         <Image
           src='/banner.jpg'
-          alt='Cena de Big Buck Bunny'
+          alt='Scene from Big Buck Bunny'
           fill
           priority
           sizes='100vw'
@@ -22,19 +22,19 @@ export function Banner() {
           Big Buck Bunny
         </h1>
         <p className='max-w-xs text-xs md:max-w-lg md:text-lg lg:max-w-2xl'>
-          Um coelho gigante e de bom coração tem seu dia tranquilo interrompido
-          por três roedores encrenqueiros — e decide dar o troco.
+          A giant, kind-hearted rabbit has his peaceful day ruined by three
+          mischievous rodents — and decides to get even.
         </p>
       </div>
 
       <div className='flex space-x-3'>
         <button className='flex items-center gap-x-2 whitespace-nowrap rounded bg-white px-5 py-1.5 text-sm font-semibold text-black transition hover:opacity-75 md:px-8 md:py-2.5 md:text-xl'>
           <PlayIcon className='h-6' />
-          Assistir
+          Play
         </button>
         <button className='flex items-center gap-x-2 whitespace-nowrap rounded bg-gray-500/70 px-5 py-1.5 text-sm font-semibold text-white transition hover:opacity-75 md:px-8 md:py-2.5 md:text-xl'>
           <InformationCircleIcon className='h-6' />
-          Mais informações
+          More Info
         </button>
       </div>
     </section>
