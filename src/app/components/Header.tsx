@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { useScroll } from '../hooks/useScroll';
+import { Logo } from './Logo';
 
 export function Header() {
   const isScrolled = useScroll();
@@ -15,14 +16,7 @@ export function Header() {
       }`}
     >
       <div className='flex items-center space-x-2 md:space-x-8'>
-        <Image
-          src='/logo.svg'
-          alt='Codeflix'
-          width={120}
-          height={27}
-          priority
-          className='cursor-pointer'
-        />
+        <Logo />
         <nav>
           <ul className='hidden md:flex md:space-x-4'>
             {['Início', 'Séries', 'Filmes', 'Novidades', 'Minha lista'].map(
