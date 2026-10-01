@@ -29,4 +29,4 @@ Acesse <http://localhost:3000>.
 
 ## 🎓 Créditos
 
-Projeto desenvolvido durante o curso **[Full Cycle 3.0](https://fullcycle.com.br)** — módulo *Portal do usuário - Codeflix*.
+Projeto desenvolvido durante o curso **[Full Cycle 3.0](https://fullcycle.com.br)** — módulo _Portal do usuário - Codeflix_.
