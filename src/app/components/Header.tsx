@@ -29,6 +29,16 @@ export function Header() {
           </ul>
         </nav>
       </div>
+      <div className='flex items-center space-x-4'>
+        <p className='hidden cursor-not-allowed text-sm lg:inline'>Infantil</p>
+        <Image
+          src='/profile.svg'
+          alt='Perfil'
+          width={32}
+          height={32}
+          className='cursor-pointer rounded'
+        />
+      </div>
     </header>
   );
 }
