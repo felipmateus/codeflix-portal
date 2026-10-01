@@ -13,6 +13,8 @@ export function Banner() {
           sizes='100vw'
           className='object-cover object-top'
         />
+        <div className='absolute inset-0 bg-gradient-to-r from-codeflix-black/80 via-transparent to-transparent' />
+        <div className='bg-banner-fade absolute inset-x-0 bottom-0 h-2/5' />
       </div>
 
       <div className='flex flex-col space-y-4 py-16 lg:h-[65vh] lg:justify-end lg:pb-12'>
