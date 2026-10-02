@@ -13,6 +13,7 @@ A Netflix-style streaming platform where subscribers browse the catalog, search 
 - Tailwind CSS
 - Heroicons
 - ESLint + Prettier
+- Jest + Testing Library
 
 ## 🏗️ Architecture
 
@@ -29,6 +30,16 @@ yarn dev
 ```
 
 Open <http://localhost:3000>.
+
+## 🧪 Tests
+
+Unit and component tests use [Jest](https://jestjs.io/) (via `next/jest`) and [Testing Library](https://testing-library.com/).
+
+```bash
+yarn test            # run the suite once
+yarn test:watch      # re-run on file changes
+yarn test:coverage   # generate a coverage report in coverage/
+```
 
 ## 🎓 Credits
 
